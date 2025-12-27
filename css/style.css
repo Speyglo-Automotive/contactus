@@ -1,0 +1,291 @@
+/* ==========================================
+   Speyglo Automotive — Styles
+   - All key customization items are provided as CSS variables below
+   - Change variables to switch themes, fonts, sizes, and colors in one place
+   ========================================== */
+
+/* Quick: change header logo sizes -> `.brand-logo` and `.brand-logo-wrapper.unboxed .brand-logo` (mobile in @media max-width:420px) */
+:root{
+  /* ---------------- Theme Colors ---------------- */
+  --bg-color: #f7f7f8;            /* Page background color */
+  --panel-bg: #ffffff;            /* Panels & cards */
+  --logo-bg: #ffffff;             /* Logo background (use this if your logo has transparent background)
+                                     Change to other color if you want a tinted logo background */
+  --text-color: #111827;          /* Main text color */
+  --subtext-color: #6b7280;       /* Secondary text */
+  --accent-color: #0b84ff;        /* Accent / button color */
+  --hover-color: #0a73d9;         /* Hover color for buttons */
+  --loader-bg: var(--panel-bg);  /* Loader background (usually same as panel)
+                                     Set to a solid color to match your brand */
+
+
+  /* Hover brightness for icon images (1 = no change, 1.2 = +20%) */
+  --icon-hover-brightness: 1.15;
+
+  /* ---------------- Typography ---------------- */
+  --font-family: 'Poppins', Arial, sans-serif; /* Update to change fonts */
+  --font-size-base: 16px;
+  /* Heading size (default). Keep modest so the logo remains the focal point; change if needed. */
+  --font-size-heading: 24px;
+
+  /* ---------------- Loader ---------------- */
+  --loader-duration: 3.5s; /* Change animation duration */
+}
+
+/* ---------------- Dark Theme Example ----------------
+   To enable a dark theme, add .dark to <body> and override variables below
+   Example (in your HTML): <body class="dark"> ... </body>
+*/
+body.dark{
+  --bg-color: #0b0f14;
+  --panel-bg: #0f1720;
+  --text-color: #e6eef7;
+  --subtext-color: #9aa6b2;
+  --accent-color: #4aa8ff;
+  --hover-color: #2c8fe8;
+  --loader-bg: var(--panel-bg);
+}
+
+/* --------------- Base Styles ---------------- */
+*{box-sizing: border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  background:var(--bg-color);
+  color:var(--text-color);
+  font-family:var(--font-family);
+  font-size:var(--font-size-base);
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+}
+
+/* Screen container */
+.site{
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  padding:28px clamp(18px, 6vw, 28px);
+} 
+
+.site-header{width:100%;max-width:820px;display:flex;justify-content:center;align-items:center;padding:12px 0;padding-inline:clamp(18px, 6vw, 28px);margin-inline:auto;box-sizing:border-box} 
+/* Allow the brand logo to scale up — set height:auto so max-height controls the size */
+.brand-logo{height:auto;object-fit:contain}
+
+/* =========================
+   Developer visible helper
+   - Shows where to change header logo sizes (desktop and mobile)
+   - Edit values in `css/style.css` under `.brand-logo` and
+     `.brand-logo-wrapper.unboxed .brand-logo`, and mobile block `@media (max-width:420px)`.
+   ========================= */
+
+.hero{width:100%;max-width:820px;text-align:center;margin-top:18px}
+.hero h1{
+  font-size:clamp(20px, 3.6vw, 32px);
+  margin:8px 0 18px;
+  font-weight:700; /* make heading bold for visibility */
+  line-height:1.05; /* tight vertical rhythm to visually align with logo */
+  letter-spacing:-0.5px;
+  color:var(--text-color);
+  /* Tip: change --font-size-heading to scale this title to match the logo */
+} 
+
+/* ---------------- Social Icons ---------------- */
+/* Use separate row / column gaps so vertical spacing is larger than horizontal for better visual balance */
+.social-grid{display:flex;flex-wrap:wrap;gap:18px 12px;justify-content:center;margin:20px 0}
+.social{display:inline-flex;align-items:center;justify-content:center;width:84px;height:84px;background:var(--panel-bg);border-radius:12px;box-shadow:0 5px 12px rgba(16,24,40,0.06);transition:transform .18s ease,filter .18s ease;margin:0 auto}
+.social img{width:42px;height:42px;filter:grayscale(0.0) brightness(1);transition:filter .18s ease, transform .18s ease} 
+.social:hover{transform:translateY(-6px);filter:brightness(var(--icon-hover-brightness))}
+.social:active{transform:translateY(-2px)}
+.sr{position:absolute;left:-9999px}
+
+/* ---------------- About ---------------- */
+.about{margin-top:20px;padding:18px;border-radius:10px;background:linear-gradient(180deg, rgba(255,255,255,0.6), rgba(255,255,255,0.9));box-shadow:0 6px 18px rgba(15,23,42,0.04)}
+.about h2{margin:0 0 8px;font-size:18px}
+.about p{margin:0;color:var(--subtext-color);line-height:1.5}
+
+/* ---------------- Find Us ---------------- */
+.find-us{margin-top:18px}
+.btn-map{display:inline-block;padding:12px 20px;border-radius:8px;background:var(--accent-color);color:white;text-decoration:none;font-weight:600;box-shadow:0 6px 14px rgba(11,132,255,0.14);transition:background .14s ease}
+.btn-map:hover{background:var(--hover-color)}
+
+.site-footer{margin-top:auto;padding:18px 0;color:var(--subtext-color)}
+
+/* =============================
+   LOADER (Expanding Circle)
+   - The circle scales up and fades out.
+   - Use --loader-duration to adjust the speed.
+   - To disable the loader: remove the #loader element or set data-disable-loader on <body> and the JS will hide it.
+   ============================= */
+.loader{
+  position:fixed;inset:0;display:grid;place-items:center;z-index:9999;background:var(--loader-bg);pointer-events:all;transition:opacity .4s ease;}
+.loader.hidden{display:none}
+
+/* Loader size — controls the circular zooming loader. To change loader scale, edit
+   `.loader-circle` (width/height) and `.loader-circle img` (image size). Keep these
+   small so the loader doesn’t overpower the page. */
+.loader-circle{
+  width:120px;height:120px;border-radius:50%;background:var(--logo-bg);display:grid;place-items:center;box-shadow:0 12px 40px rgba(16,24,40,0.12);overflow:hidden;animation:loader-expand var(--loader-duration) cubic-bezier(.2,.9,.2,1) forwards}
+.loader-circle img{width:72px;height:72px;object-fit:contain} 
+
+/* ---------------- Logo background wrapper & image rendering ---------------- */
+.brand-logo-wrapper{background:var(--logo-bg);padding:8px;border-radius:12px;display:flex;align-items:center;justify-content:center;width:100%;max-width:520px;margin:0 auto;box-shadow:0 8px 22px rgba(15,23,42,0.06);overflow:hidden;transition:all .22s ease} 
+
+/* Give the actual <img> a background too (handles SVG transparency)
+   and prevent pixelation by limiting max-height and using image-rendering hints.
+   For best results, supply a high-res PNG at logo@2x.png and use srcset. */
+
+/* Make the header brand logo very large and eye-catching. To change the size, update
+   `max-height` on `.brand-logo` for the default size and
+   `.brand-logo-wrapper.unboxed .brand-logo` for the enlarged state.
+   Keep `width: auto` so the logo preserves its aspect ratio. Use px or rem values. */
+/* Header logo sizing — change these values to control the header logo appearance:
+   - Default size: `.brand-logo { max-height: ... }`
+   - Expanded (unboxed) size: `.brand-logo-wrapper.unboxed .brand-logo { max-height: ... }`
+   - Mobile bounds are in the `@media (max-width:420px)` block below.
+   Use `px` or `rem` and keep `width: auto` to preserve aspect ratio. */
+.brand-logo{display:block;margin:0 auto;background:var(--logo-bg);border-radius:8px;max-height:140px;width:auto;image-rendering:-webkit-optimize-contrast;image-rendering:crisp-edges;transition:all .22s ease} 
+
+/* Unboxed state: removes the surrounding box and increases logo size once the page is loaded
+   This class is toggled by JavaScript when all social icons are present or after a short timeout.
+   To keep the box permanently, remove the JS code or set the class in HTML if desired. */
+.brand-logo-wrapper.unboxed{background:transparent;padding:0;border-radius:0;box-shadow:none;overflow:visible}
+.brand-logo-wrapper.unboxed .brand-logo{max-height:220px} 
+
+/* Mobile-specific size tweaks: reduce the padding and max-height so the logo fits */
+@media (max-width:540px){
+  .brand-logo-wrapper{padding:6px}
+  /* Mobile: keep header logo large but bounded to avoid layout overflow */
+  .brand-logo{max-height:230px}
+  .brand-logo-wrapper.unboxed .brand-logo{max-height:300px}
+} 
+
+/* Fade and hide entire loader once animation completes */
+.loader.done{opacity:0;pointer-events:none}
+
+/* Logo zoom and fade animation
+   - Adjust scale() values to control zoom amount
+   - Default: scales from 1x to 2.64x (bigger zoom)
+   - Increase the scale value for more dramatic zoom (e.g., scale(5) for 5x zoom) */
+@keyframes logo-zoom-fade{
+  0%{
+    transform:scale(1); /* Starting size: normal */
+    opacity:1; /* Fully visible */
+  }
+  70%{
+    transform:scale(2.16); /* Mid-animation: zoomed in, still visible (1.8 * 1.2) */
+    opacity:1;
+  }
+  100%{
+    transform:scale(2.64); /* Final size: bigger zoom (2.2 * 1.2) */
+    opacity:0; /* Fully transparent */
+  }
+}
+
+/* Respect users who prefer reduced motion - skip animation */
+@media (prefers-reduced-motion: reduce){
+  .loader-logo{animation:none}
+  .loader{opacity:0;pointer-events:none}
+}
+
+/* Mobile optimization - slightly smaller logo on very small screens */
+@media (max-width:420px){
+  .loader-logo{
+    width:138px; /* 20% bigger (115px * 1.2) */
+    max-width:45vw;
+    max-height:45vh;
+    /* Increase zoom on mobile by 20% */
+    animation:logo-zoom-fade-mobile var(--loader-duration) cubic-bezier(.2,.9,.2,1) forwards;
+  }
+}
+
+/* Mobile zoom animation - 20% bigger zoom */
+@keyframes logo-zoom-fade-mobile{
+  0%{
+    transform:scale(1);
+    opacity:1;
+  }
+  70%{
+    transform:scale(2.59); /* 2.16 * 1.2 */
+    opacity:1;
+  }
+  100%{
+    transform:scale(3.17); /* 2.64 * 1.2 */
+    opacity:0;
+  }
+}
+
+/* Loader logo styling
+   - Change width to adjust logo size (responsive with max-width)
+   - Logo maintains aspect ratio automatically */
+.loader-logo{
+  width:166px; /* 20% bigger (138px * 1.2) */
+  max-width:50vw; /* Responsive: logo won't exceed 50% of viewport width */
+  max-height:50vh; /* Won't exceed 50% of viewport height */
+  height:auto; /* Maintains aspect ratio */
+  object-fit:contain;
+  /* Animation: zooms in and fades out over duration set by --loader-duration */
+  animation:logo-zoom-fade var(--loader-duration) cubic-bezier(.2,.9,.2,1) forwards;
+}
+
+/* ---------------- Responsive ---------------- */
+@media (max-width:640px){
+  /* Small phones and larger mobiles: avoid fixed-height logo so scaling is controlled by vw-based rules.
+     Keep social grid compact but add horizontal breathing room. */
+  .brand-logo{height:auto;max-width:92%;width:auto}
+  /* Social grid and tiles scale using viewport height so spacing tightens on short screens */
+  .social-grid{display:grid;grid-template-columns:repeat(3, minmax(56px,1fr));gap:clamp(10px,1.0vh,14px) clamp(6px,0.9vh,10px);align-items:center;padding-inline:10px} 
+  .social{width:100%;max-width:clamp(64px,16vh,96px);height:clamp(56px,14vh,76px);padding:clamp(4px,0.9vh,8px)}
+  .social img{width:clamp(28px,6vh,38px);height:clamp(28px,6vh,38px)}
+  .hero h1{font-size:clamp(20px,5.1vw,26px)}
+  .about{padding:14px}
+  .social{justify-self:center}
+}  
+
+/* For very narrow phones, use 2 columns so icons remain large and tappable */
+@media (max-width:420px){
+  /* Mobile phones: use width-based scaling so larger phones get proportionally larger logos.
+     Add horizontal padding so icons and content never sit flush against the viewport edge. */
+  .site{padding-inline:clamp(18px, 6vw, 28px)}
+  /* Reduce header vertical footprint so the title sits closer to the logo on small screens */
+  .site-header{width:100%;min-height:20vh;display:flex;align-items:center;justify-content:center;padding:8px 10px}
+
+  /* Scale the logo primarily by viewport width for consistent behavior */
+  .brand-logo{
+    height:auto;
+    width:auto;
+    max-width:92%;
+    max-height:clamp(160px, 36vw, 46vh); /* scales with width; ensures minimum & maximum bounds */
+  }
+  .brand-logo-wrapper.unboxed .brand-logo{max-height:clamp(220px, 42vw, 54vh)}
+
+  /* Tighten hero spacing so content feels cohesive on phones */
+  .hero{margin-top:6px}
+  .hero h1{font-size:clamp(20px,5.3vw,29px);margin-top:4px;margin-bottom:6px}
+
+  /* Social layout: 3 columns with comfortable gaps and horizontal padding from edges */
+  .social-grid{display:grid;grid-template-columns:repeat(3, minmax(56px,1fr));gap:clamp(8px,1.0vh,12px) clamp(6px,0.8vh,8px);align-items:center;justify-items:center;padding-inline:10px} 
+  /* Social tiles scale with viewport height: reduces horizontal padding on short screens while keeping tappable size */
+  .social{width:100%;max-width:clamp(60px,14vh,72px);height:clamp(52px,13vh,64px);padding:clamp(4px,0.8vh,6px);border-radius:12px}
+  .social img{width:clamp(28px,5.6vh,32px);height:clamp(28px,5.6vh,32px)}
+} 
+
+/* For very narrow phones, keep 2 columns so icons remain large and tappable and slightly reduce logo bounds */
+@media (max-width:360px){
+  .brand-logo{max-height:36vh}
+  .social-grid{grid-template-columns:repeat(2, minmax(56px,1fr));gap:clamp(8px,1.2vh,12px) clamp(6px,1.0vh,10px)}
+  /* Very narrow devices: use smaller, vh-scaled social tiles to reduce horizontal interior spacing */
+  .social{max-width:clamp(56px,13vh,68px);height:clamp(48px,12vh,60px)}
+  .social img{width:clamp(26px,5.2vh,30px);height:clamp(26px,5.2vh,30px)}
+  .social{height:72px;padding:6px}
+}
+
+@media (min-width:980px){
+  .site{padding:40px}
+  .social{width:96px;height:96px}
+  .social img{width:48px;height:48px}
+}
+
+/* ---------------- Utility Classes ---------------- */
+.hidden{display:none !important}
+.center{display:flex;align-items:center;justify-content:center}
