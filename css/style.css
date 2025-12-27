@@ -93,10 +93,12 @@ body{
 /* ---------------- Social Icons ---------------- */
 /* Use separate row / column gaps so vertical spacing is larger than horizontal for better visual balance */
 .social-grid{display:flex;flex-wrap:wrap;gap:18px 12px;justify-content:center;margin:20px 0}
-.social{display:inline-flex;align-items:center;justify-content:center;width:84px;height:84px;background:var(--panel-bg);border-radius:12px;box-shadow:0 5px 12px rgba(16,24,40,0.06);transition:transform .18s ease,filter .18s ease;margin:0 auto}
-.social img{width:42px;height:42px;filter:grayscale(0.0) brightness(1);transition:filter .18s ease, transform .18s ease} 
+.social{display:inline-flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;width:84px;padding:12px;background:var(--panel-bg);border-radius:12px;box-shadow:0 5px 12px rgba(16,24,40,0.06);transition:transform .18s ease,filter .18s ease;margin:0 auto;text-decoration:none}
+.social img{width:42px;height:42px;filter:grayscale(0.0) brightness(1);transition:filter .18s ease, transform .18s ease;aspect-ratio:1} 
 .social:hover{transform:translateY(-6px);filter:brightness(var(--icon-hover-brightness))}
 .social:active{transform:translateY(-2px)}
+/* iOS-style label for social icons */
+.social-label{font-size:11px;color:var(--text-color);font-weight:500;text-align:center;line-height:1.2;text-decoration:none;word-break:break-word}
 .sr{position:absolute;left:-9999px}
 
 /* ---------------- About ---------------- */
@@ -235,7 +237,7 @@ body{
   .brand-logo{height:auto;max-width:92%;width:auto}
   /* Social grid and tiles scale using viewport height so spacing tightens on short screens */
   .social-grid{display:grid;grid-template-columns:repeat(3, minmax(56px,1fr));gap:clamp(10px,1.0vh,14px) clamp(6px,0.9vh,10px);align-items:center;padding-inline:10px} 
-  .social{width:100%;max-width:clamp(64px,16vh,96px);height:clamp(56px,14vh,76px);padding:clamp(4px,0.9vh,8px)}
+  .social{width:100%;max-width:clamp(64px,16vh,96px);aspect-ratio:auto;padding:clamp(4px,0.9vh,8px);gap:4px}
   .social img{width:clamp(28px,6vh,38px);height:clamp(28px,6vh,38px)}
   .hero h1{font-size:clamp(20px,5.1vw,26px)}
   .about{padding:14px}
@@ -266,7 +268,7 @@ body{
   /* Social layout: 3 columns with comfortable gaps and horizontal padding from edges */
   .social-grid{display:grid;grid-template-columns:repeat(3, minmax(56px,1fr));gap:clamp(8px,1.0vh,12px) clamp(6px,0.8vh,8px);align-items:center;justify-items:center;padding-inline:10px} 
   /* Social tiles scale with viewport height: reduces horizontal padding on short screens while keeping tappable size */
-  .social{width:100%;max-width:clamp(60px,14vh,72px);height:clamp(52px,13vh,64px);padding:clamp(4px,0.8vh,6px);border-radius:12px}
+  .social{width:100%;max-width:clamp(60px,14vh,72px);aspect-ratio:auto;padding:clamp(4px,0.8vh,6px);border-radius:0;gap:4px}
   .social img{width:clamp(28px,5.6vh,32px);height:clamp(28px,5.6vh,32px)}
 } 
 
@@ -275,14 +277,14 @@ body{
   .brand-logo{max-height:36vh}
   .social-grid{grid-template-columns:repeat(2, minmax(56px,1fr));gap:clamp(8px,1.2vh,12px) clamp(6px,1.0vh,10px)}
   /* Very narrow devices: use smaller, vh-scaled social tiles to reduce horizontal interior spacing */
-  .social{max-width:clamp(56px,13vh,68px);height:clamp(48px,12vh,60px)}
+  .social{max-width:clamp(56px,13vh,68px);aspect-ratio:auto;gap:4px}
   .social img{width:clamp(26px,5.2vh,30px);height:clamp(26px,5.2vh,30px)}
-  .social{height:72px;padding:6px}
+  .social{aspect-ratio:auto;padding:6px;gap:4px}
 }
 
 @media (min-width:980px){
   .site{padding:40px}
-  .social{width:96px;height:96px}
+  .social{width:96px;height:auto;gap:8px}
   .social img{width:48px;height:48px}
 }
 
