@@ -136,7 +136,7 @@ body{
   display:block;
 }
 
-.site-footer{margin-top:auto;padding:18px 0;color:var(--subtext-color)}
+.site-footer{margin-top:auto;padding:8px 0;color:var(--subtext-color)}
 
 /* =============================
    LOADER (Expanding Circle)
@@ -257,7 +257,7 @@ body{
 @media (max-width:640px){
   .brand-logo{height:auto;max-width:90%;width:auto}
   .social-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px 12px;padding:0 12px;max-width:320px;margin:20px auto}
-  .social{width:100%;padding:10px;gap:6px}
+  .social{width:100%;padding:6px;gap:6px}
   .social img{width:40px;height:40px}
   .hero h1{font-size:clamp(22px,5vw,28px)}
   .about{padding:16px;margin-top:24px}
@@ -266,46 +266,50 @@ body{
 
 /* ---------------- Responsive: Mobile Phones ---------------- */
 @media (max-width:480px){
-  .site{padding:20px 16px}
-  .site-header{padding:10px 0;min-height:auto}
+  .site{padding:12px 14px}
+  .site-header{padding:6px 0;min-height:auto}
 
-  .brand-logo{max-width:85%;max-height:180px}
-  .brand-logo-wrapper.unboxed .brand-logo{max-height:240px}
+  .brand-logo{max-width:85%;max-height:95px}
+  .brand-logo-wrapper.unboxed .brand-logo{max-height:125px}
 
-  .hero{margin-top:12px}
-  .hero h1{font-size:clamp(22px,6vw,28px);margin:8px 0 16px}
+  .hero{margin-top:8px}
+  .hero h1{font-size:clamp(19px,5.2vw,24px);margin:5px 0 10px}
 
   /* 2x2 grid for social icons */
-  .social-grid{grid-template-columns:repeat(2,1fr);gap:12px;max-width:280px;padding:0}
-  .social{width:100%;max-width:120px;aspect-ratio:1;padding:12px 8px;gap:4px}
-  .social img{width:42px;height:42px}
-  .social-label{font-size:10px;display:block}
+  .social-grid{grid-template-columns:repeat(2,1fr);gap:8px;max-width:270px;padding:0}
+  .social{width:100%;max-width:115px;aspect-ratio:1;padding:4px;gap:2px}
+  .social img{width:40px;height:40px}
+  .social-label{font-size:9px;display:block}
   
   /* Stack action buttons vertically on mobile */
-  .actions{flex-direction:column;gap:12px;margin-top:20px;max-width:280px}
-  .btn-call,.btn-map{width:100%;min-width:auto;padding:14px 20px;font-size:15px}
+  .actions{flex-direction:column;gap:8px;margin-top:10px;max-width:270px}
+  .btn-call,.btn-map{width:100%;min-width:auto;padding:10px 18px;font-size:14px}
   
-  .about{padding:16px;margin-top:20px}
-  .about h2{font-size:16px}
-  .about p{font-size:14px}
+  .about{padding:12px;margin-top:10px;margin-bottom:8px}
+  .about h2{font-size:14px;margin:0 0 4px}
+  .about p{font-size:12px;line-height:1.4}
 } 
 
 /* ---------------- Responsive: Very Small Phones ---------------- */
 @media (max-width:360px){
-  .site{padding:16px 12px}
-  .brand-logo{max-height:160px}
-  .brand-logo-wrapper.unboxed .brand-logo{max-height:200px}
+  .site{padding:10px 12px}
+  .brand-logo{max-height:85px}
+  .brand-logo-wrapper.unboxed .brand-logo{max-height:110px}
   
-  .hero h1{font-size:20px;margin:6px 0 12px}
+  .hero h1{font-size:17px;margin:4px 0 8px}
   
-  .social-grid{gap:10px;max-width:240px}
-  .social{max-width:100px;padding:10px 6px}
-  .social img{width:38px;height:38px}
-  .social-label{font-size:9px}
+  .social-grid{gap:6px;max-width:240px}
+  .social{max-width:105px;padding:3px}
+  .social img{width:36px;height:36px}
+  .social-label{font-size:8.5px}
   
-  .actions{max-width:240px;gap:10px}
-  .btn-call,.btn-map{padding:12px 16px;font-size:14px;min-width:auto}
-  .btn-icon{width:18px;height:18px}
+  .actions{max-width:240px;gap:6px;margin-top:8px}
+  .btn-call,.btn-map{padding:9px 16px;font-size:13px;min-width:auto}
+  .btn-icon{width:16px;height:16px}
+  
+  .about{padding:10px;margin-top:8px;margin-bottom:6px}
+  .about h2{font-size:13px;margin:0 0 3px}
+  .about p{font-size:11.5px;line-height:1.4}
 }
 
 /* ---------------- Responsive: Large Screens ---------------- */
