@@ -222,7 +222,7 @@ body{
     transform:scale(1);
     opacity:1;
   }
-  78%{
+  85%{
     transform:scale(1.38);
     opacity:1;
   }
@@ -306,4 +306,5 @@ body{
 /* ---------------- Utility Classes ---------------- */
 .hidden{display:none !important}
 .center{display:flex;align-items:center;justify-content:center}
+
 
