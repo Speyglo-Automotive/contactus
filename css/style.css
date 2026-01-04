@@ -91,8 +91,8 @@ body{
 
 /* ---------------- Social Icons ---------------- */
 /* Use separate row / column gaps so vertical spacing is larger than horizontal for better visual balance */
-.social-grid{display:flex;flex-wrap:wrap;gap:18px 12px;justify-content:center;margin:20px 0}
-.social{display:inline-flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;width:84px;padding:12px;background:var(--panel-bg);border-radius:12px;box-shadow:0 5px 12px rgba(16,24,40,0.06);transition:transform .18s ease,filter .18s ease;margin:0 auto;text-decoration:none}
+.social-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px 8px;margin:20px auto;max-width:540px;padding:0 12px;box-sizing:border-box}
+.social{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;padding:12px;background:var(--panel-bg);border-radius:12px;box-shadow:0 5px 12px rgba(16,24,40,0.06);transition:transform .18s ease,filter .18s ease;text-decoration:none;width:100%}
 .social img{width:42px;height:42px;filter:grayscale(0.0) brightness(1);transition:filter .18s ease, transform .18s ease;aspect-ratio:1} 
 .social:hover{transform:translateY(-6px);filter:brightness(var(--icon-hover-brightness))}
 .social:active{transform:translateY(-2px)}
@@ -106,9 +106,9 @@ body{
 .about p{margin:0;color:var(--subtext-color);line-height:1.5}
 
 /* ---------------- Action Buttons ---------------- */
-.actions{display:flex;gap:12px;align-items:center;justify-content:center;margin:24px auto 0;flex-wrap:wrap;max-width:500px}
+.actions{display:grid;grid-template-columns:repeat(2,1fr);gap:12px 8px;margin:24px auto 0;max-width:540px;width:100%;padding:0 12px;box-sizing:border-box}
 
-.btn-call,.btn-map{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:12px 20px;border-radius:8px;color:white;text-decoration:none;font-weight:600;box-shadow:0 4px 12px rgba(0,0,0,0.12);transition:all .2s ease;min-width:140px}
+.btn-call,.btn-map{display:flex;align-items:center;justify-content:center;gap:8px;padding:12px 20px;border-radius:8px;color:white;text-decoration:none;font-weight:600;box-shadow:0 4px 12px rgba(0,0,0,0.12);transition:all .2s ease;width:100%;box-sizing:border-box}
 
 .btn-call{background:#4CAF50}
 .btn-call:hover{background:#45a049;transform:translateY(-2px);box-shadow:0 6px 16px rgba(76,175,80,0.3)}
@@ -136,7 +136,7 @@ body{
   display:block;
 }
 
-.site-footer{margin-top:auto;padding:8px 0;color:var(--subtext-color)}
+.site-footer{margin-top:auto;padding:18px 0;color:var(--subtext-color)}
 
 /* =============================
    LOADER (Expanding Circle)
@@ -156,7 +156,7 @@ body{
 .loader-circle img{width:72px;height:72px;object-fit:contain} 
 
 /* ---------------- Logo background wrapper & image rendering ---------------- */
-.brand-logo-wrapper{background:var(--logo-bg);padding:8px;border-radius:12px;display:flex;align-items:center;justify-content:center;width:100%;max-width:520px;margin:0 auto;box-shadow:0 8px 22px rgba(15,23,42,0.06);overflow:hidden;transition:all .22s ease} 
+.brand-logo-wrapper{display:flex;align-items:center;justify-content:center;width:80%;max-width:520px;margin:0 auto;overflow:hidden;transition:all .22s ease} 
 
 /* Give the actual <img> a background too (handles SVG transparency)
    and prevent pixelation by limiting max-height and using image-rendering hints.
@@ -171,7 +171,7 @@ body{
    - Expanded (unboxed) size: `.brand-logo-wrapper.unboxed .brand-logo { max-height: ... }`
    - Mobile bounds are in the `@media (max-width:420px)` block below.
    Use `px` or `rem` and keep `width: auto` to preserve aspect ratio. */
-.brand-logo{display:block;margin:0 auto;background:var(--logo-bg);border-radius:8px;max-height:140px;width:auto;image-rendering:-webkit-optimize-contrast;image-rendering:crisp-edges;transition:all .22s ease} 
+.brand-logo{display:block;margin:0 auto;max-height:140px;width:auto;image-rendering:-webkit-optimize-contrast;image-rendering:crisp-edges;transition:all .22s ease} 
 
 /* Unboxed state: removes the surrounding box and increases logo size once the page is loaded
    This class is toggled by JavaScript when all social icons are present or after a short timeout.
@@ -257,59 +257,55 @@ body{
 @media (max-width:640px){
   .brand-logo{height:auto;max-width:90%;width:auto}
   .social-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px 12px;padding:0 12px;max-width:320px;margin:20px auto}
-  .social{width:100%;padding:6px;gap:6px}
+  .social{padding:10px;gap:6px}
   .social img{width:40px;height:40px}
   .hero h1{font-size:clamp(22px,5vw,28px)}
   .about{padding:16px;margin-top:24px}
-  .actions{gap:10px;flex-direction:row}
+  .actions{display:grid;grid-template-columns:repeat(2,1fr);gap:12px 8px;max-width:320px;width:100%;padding:0 12px;margin:24px auto 0;box-sizing:border-box}
 }  
 
 /* ---------------- Responsive: Mobile Phones ---------------- */
 @media (max-width:480px){
-  .site{padding:12px 14px}
-  .site-header{padding:6px 0;min-height:auto}
+  .site{padding:20px 16px}
+  .site-header{padding:10px 0;min-height:auto}
 
-  .brand-logo{max-width:85%;max-height:95px}
-  .brand-logo-wrapper.unboxed .brand-logo{max-height:125px}
+  .brand-logo{max-width:85%;max-height:180px}
+  .brand-logo-wrapper.unboxed .brand-logo{max-height:240px}
 
-  .hero{margin-top:8px}
-  .hero h1{font-size:clamp(19px,5.2vw,24px);margin:5px 0 10px}
+  .hero{margin-top:12px}
+  .hero h1{font-size:clamp(22px,6vw,28px);margin:8px 0 16px}
 
   /* 2x2 grid for social icons */
-  .social-grid{grid-template-columns:repeat(2,1fr);gap:8px;max-width:270px;padding:0}
-  .social{width:100%;max-width:115px;aspect-ratio:1;padding:4px;gap:2px}
-  .social img{width:40px;height:40px}
-  .social-label{font-size:9px;display:block}
+  .social-grid{grid-template-columns:repeat(2,1fr);gap:12px;max-width:280px;padding:0}
+  .social{width:100%;padding:12px 8px;gap:4px}
+  .social img{width:42px;height:42px}
+  .social-label{font-size:10px;display:block}
   
   /* Stack action buttons vertically on mobile */
-  .actions{flex-direction:column;gap:8px;margin-top:10px;max-width:270px}
-  .btn-call,.btn-map{width:100%;min-width:auto;padding:10px 18px;font-size:14px}
+  .actions{display:grid;grid-template-columns:1fr;gap:12px;margin:20px auto 0;max-width:280px;width:100%;padding:0;box-sizing:border-box}
+  .btn-call,.btn-map{width:100%;min-width:auto;padding:14px 20px;font-size:15px}
   
-  .about{padding:12px;margin-top:10px;margin-bottom:8px}
-  .about h2{font-size:14px;margin:0 0 4px}
-  .about p{font-size:12px;line-height:1.4}
+  .about{padding:16px;margin-top:20px}
+  .about h2{font-size:16px}
+  .about p{font-size:14px}
 } 
 
 /* ---------------- Responsive: Very Small Phones ---------------- */
 @media (max-width:360px){
-  .site{padding:10px 12px}
-  .brand-logo{max-height:85px}
-  .brand-logo-wrapper.unboxed .brand-logo{max-height:110px}
+  .site{padding:16px 12px}
+  .brand-logo{max-height:160px}
+  .brand-logo-wrapper.unboxed .brand-logo{max-height:200px}
   
-  .hero h1{font-size:17px;margin:4px 0 8px}
+  .hero h1{font-size:20px;margin:6px 0 12px}
   
-  .social-grid{gap:6px;max-width:240px}
-  .social{max-width:105px;padding:3px}
-  .social img{width:36px;height:36px}
-  .social-label{font-size:8.5px}
+  .social-grid{gap:10px;max-width:240px}
+  .social{max-width:100px;padding:10px 6px}
+  .social img{width:38px;height:38px}
+  .social-label{font-size:9px}
   
-  .actions{max-width:240px;gap:6px;margin-top:8px}
-  .btn-call,.btn-map{padding:9px 16px;font-size:13px;min-width:auto}
-  .btn-icon{width:16px;height:16px}
-  
-  .about{padding:10px;margin-top:8px;margin-bottom:6px}
-  .about h2{font-size:13px;margin:0 0 3px}
-  .about p{font-size:11.5px;line-height:1.4}
+  .actions{max-width:240px;gap:10px}
+  .btn-call,.btn-map{padding:12px 16px;font-size:14px;min-width:auto}
+  .btn-icon{width:18px;height:18px}
 }
 
 /* ---------------- Responsive: Large Screens ---------------- */
