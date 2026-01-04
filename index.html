@@ -5,45 +5,19 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Speyglo Automotive — Connect With Us</title>
-  <!--
-    Tip: To use Google Fonts, uncomment the link below and update --font-family in css/style.css
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-  -->
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-
-  <!-- ==========================================
-       FULL-SCREEN LOGO LOADER
-       - Displays centered logo on a full-screen white/light background
-       - Logo zooms in and fades out smoothly over 2-3 seconds
-       - No circular container or background around the logo
-       
-       CUSTOMIZATION:
-       - To change the logo: replace src="L.svg" with your logo file path
-       - To adjust animation speed: modify --loader-duration in css/style.css (default: 2.6s)
-       - To change background color: modify --loader-bg in css/style.css
-       - To disable loader: add data-disable-loader attribute to <body> tag or remove this entire block
-       ========================================== -->
+  <!-- Lightweight splash so content loads without layout shift -->
   <div id="loader" class="loader" role="status" aria-label="Loading">
-    <!-- LOGO IMAGE: Replace src="L.svg" with your own logo file (SVG, PNG, JPG, etc.) -->
     <img src="assets/images/L.svg" id="loader-logo" class="loader-logo" alt="Speyglo Logo">
   </div>
 
-  <!-- ==========================================
-       MAIN PAGE
-       - Light-themed layout with top logo and social links
-       - Replace icons in /icons and update links below
-       ========================================== -->
   <main class="site">
 
     <header class="site-header">
-      <!--
-        Logo wrapper: gives your transparent logo a white background and prevents visual pixelation
-        Recommendation: include logo.png (1x) and logo@2x.png (2x @ retina)
-      -->
+      <!-- Brand mark stays vector for crisp scaling -->
       <span class="brand-logo-wrapper">
-        <!-- Use SVG directly (no PNG fallback) so the logo always appears as vector artwork -->
         <img class="brand-logo" src="assets/images/L.svg" alt="Speyglo Automotive Logo" width="180" height="56">
       </span>
     </header>
@@ -51,9 +25,8 @@
     <section class="hero">
       <h1>Connect With Us</h1>
 
-      <!-- Note: JS fallback will try root-level filenames if foldered assets (e.g. icons/) are not available on the host -->
+      <!-- Social shortcuts -->
       <nav class="social-grid" aria-label="Speyglo social links">
-        <!-- Each icon prefers PNG files (icons/*.png). If a PNG is missing, SVG fallback is used automatically -->
         <a class="social" href="https://wa.me/+94764089856" target="_blank" rel="noopener noreferrer">
           <img src="assets/icons/whatsapp.png" alt="WhatsApp">
           <span class="social-label">WhatsApp</span>
@@ -91,16 +64,13 @@
           </svg>
           <span>Find Us</span>
         </a>
-        <!-- To change location update the href above. To embed a map later, replace this link with an iframe. -->
       </div>
 
-      <!-- Optional About Section -->
       <article class="about">
         <h2>About Speyglo Automotive</h2>
         <p>
           Speyglo Automotive is your trusted partner for vehicle care and customization. From detailing and repairs to performance upgrades, we bring precision and passion to every ride.
         </p>
-        <!-- To hide this section, add `.hidden` to the .about element or remove the block entirely. -->
       </article>
 
     </section>
